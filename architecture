@@ -1,0 +1,93 @@
+RSR-Automation
+│
+├── tests
+│   │
+│   ├── smoke
+│   │   ├── login.spec.ts
+│   │   ├── dashboard.spec.ts
+│   │   └── logout.spec.ts
+│   │
+│   ├── dashboard
+│   │   ├── dashboard-kpi.spec.ts
+│   │   └── dashboard-navigation.spec.ts
+│   │
+│   ├── rail
+│   │   ├── rail-booking.spec.ts
+│   │   ├── rail-gatein.spec.ts
+│   │   ├── rail-gateout.spec.ts
+│   │   ├── rail-container.spec.ts
+│   │   └── rail-search.spec.ts
+│   │
+│   ├── ship
+│   │   ├── vessel.spec.ts
+│   │   ├── cargo.spec.ts
+│   │   ├── ship-operation.spec.ts
+│   │   └── berth.spec.ts
+│   │
+│   ├── truck
+│   │   ├── truck-gatein.spec.ts
+│   │   ├── truck-gateout.spec.ts
+│   │   ├── truck-operation.spec.ts
+│   │   └── truck-search.spec.ts
+│   │
+│   ├── admin
+│   │   ├── users.spec.ts
+│   │   ├── roles.spec.ts
+│   │   ├── permissions.spec.ts
+│   │   ├── company-group.spec.ts
+│   │   ├── branch.spec.ts
+│   │   ├── customer.spec.ts
+│   │   └── master-data.spec.ts
+│   │
+│   ├── regression
+│   │   └── regression-suite.spec.ts
+│   │
+│   └── e2e
+│       └── rsr-full-flow.spec.ts
+│
+├── pages
+│   ├── LoginPage.ts
+│   ├── DashboardPage.ts
+│   ├── RailPage.ts
+│   ├── ShipPage.ts
+│   ├── TruckPage.ts
+│   ├── AdminPage.ts
+│   └── BasePage.ts
+│
+├── fixtures
+│   ├── baseFixture.ts
+│   └── authFixture.ts
+│
+├── test-data
+│   ├── users.json
+│   ├── railData.json
+│   ├── shipData.json
+│   └── truckData.json
+│
+├── utils
+│   ├── logger.ts
+│   ├── waitHelper.ts
+│   ├── randomData.ts
+│   ├── excelReader.ts
+│   └── screenshot.ts
+│
+├── api
+│   ├── authApi.ts
+│   ├── railApi.ts
+│   ├── shipApi.ts
+│   └── truckApi.ts
+│
+├── reports
+├── screenshots
+├── videos
+├── traces
+├── allure-results
+├── allure-report
+│
+├── .auth
+│   └── admin.json
+│
+├── .env
+├── playwright.config.ts
+├── package.json
+└── README.md
