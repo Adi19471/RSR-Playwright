@@ -14,7 +14,9 @@ export default defineConfig({
 
   retries: process.env.CI ? 2 : 0,
 
-  workers: process.env.CI ? 1 : undefined,
+  // UAT enforces a single session per user account, so parallel workers
+  // sharing RSR_USERNAME/RSR_PASSWORD log each other out mid-test.
+  workers: 1,
 
   reporter: [
     ["html"],
@@ -22,52 +24,45 @@ export default defineConfig({
     ["allure-playwright"]
   ],
 
-  use: {
-    baseURL: process.env.BASE_URL,
+ use: {
+  baseURL: process.env.BASE_URL,
 
-    headless: false,
+  headless: false,
 
-    screenshot: "only-on-failure",
+  viewport: null,
 
-    video: "retain-on-failure",
 
-    trace: "retain-on-failure",
 
-    actionTimeout: 15000,
+  screenshot: "only-on-failure",
 
-    navigationTimeout: 30000,
+  video: "retain-on-failure",
 
-    viewport: {
-      width: 1920,
-      height: 1080,
-    },
+  trace: "retain-on-failure",
 
-    ignoreHTTPSErrors: true,
-  },
+  actionTimeout: 15000,
 
-  projects: [
-    {
-      name: "chromium",
-      use: {
-        ...devices["Desktop Chrome"],
+  navigationTimeout: 30000,
+
+  ignoreHTTPSErrors: true,
+},
+
+ projects: [
+  {
+    name: "chromium",
+    use: {
+      browserName: "chromium",
+
+      viewport: null,
+
+      launchOptions: {
+        args: [
+          "--start-maximized",
+          "--force-device-scale-factor=1"
+        ],
       },
     },
-
-    // Enable if required
-    // {
-    //   name: "firefox",
-    //   use: {
-    //     ...devices["Desktop Firefox"],
-    //   },
-    // },
-
-    // {
-    //   name: "webkit",
-    //   use: {
-    //     ...devices["Desktop Safari"],
-    //   },
-    // },
-  ],
+  },
+],
 
   outputDir: "test-results",
 });
