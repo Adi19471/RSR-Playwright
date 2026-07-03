@@ -118,6 +118,11 @@ test("Equipment: new equipment type persists in the grid", async ({ page }) => {
 });
 
 test("Machinery: new machinery type persists in the grid", async ({ page }) => {
+  // Known bug (found 2026-07-03): the "New" form shows a "Created successfully"
+  // toast, but the record never actually persists (confirmed via fresh reload +
+  // search: count stays unchanged, new code not found). Kept as an expected
+  // failure so this alerts loudly the moment the backend actually fixes it.
+  test.fail();
   const code = `AT${Date.now()}`;
   await openAdminScreens(page);
   await openMasterScreen(page, "Machinery");

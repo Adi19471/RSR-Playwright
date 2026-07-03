@@ -1,10 +1,16 @@
 import { defineConfig, devices } from "@playwright/test";
 import dotenv from "dotenv";
+import { authFile } from "./global-setup";
 
 dotenv.config();
 
 export default defineConfig({
   testDir: "./tests",
+
+  // Logs in once and saves the session so individual specs don't each
+  // perform their own UI login (faster, and avoids repeatedly re-triggering
+  // UAT's single-session-per-account behavior).
+  globalSetup: "./global-setup.ts",
 
   timeout: 60 * 1000,
 
@@ -31,7 +37,7 @@ export default defineConfig({
 
   viewport: null,
 
-
+  storageState: authFile,
 
   screenshot: "only-on-failure",
 

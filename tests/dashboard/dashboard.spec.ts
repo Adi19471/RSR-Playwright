@@ -1,5 +1,5 @@
 import { test, expect } from "../../fixtures/authFixture";
-import { expectDashboardLoaded, kpiCard } from "../../pages/DashboardPage";
+import { expectDashboardLoaded, kpiCard } from "../../pages/Dashboard/DashboardPage";
 
 test.beforeEach(async ({ page }) => {
   await expectDashboardLoaded(page);
