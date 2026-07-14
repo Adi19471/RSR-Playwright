@@ -53,23 +53,67 @@ export default defineConfig({
   ignoreHTTPSErrors: true,
 },
 
- projects: [
-  {
-    name: "chromium",
-    use: {
-      browserName: "chromium",
-
-      viewport: null,
-
-      launchOptions: {
-        args: [
-          "--start-maximized",
-          "--force-device-scale-factor=1"
-        ],
+  projects: [
+    {
+      name: 'chromium',
+      use: {
+        browserName: 'chromium',
+        viewport: null,
+        launchOptions: {
+          args: [
+            '--start-maximized',
+            '--force-device-scale-factor=1',
+          ],
+        },
       },
     },
-  },
-],
+
+    {
+      name: 'chrome',
+      use: {
+        ...devices['Desktop Chrome'],
+        channel: 'chrome',
+        viewport: null,
+        launchOptions: {
+          args: [
+            '--start-maximized',
+            '--force-device-scale-factor=1',
+          ],
+        },
+      },
+    },
+
+    {
+      name: 'msedge',
+      use: {
+        ...devices['Desktop Edge'],
+        channel: 'msedge',
+        viewport: null,
+        launchOptions: {
+          args: [
+            '--start-maximized',
+            '--force-device-scale-factor=1',
+          ],
+        },
+      },
+    },
+
+    {
+      name: 'firefox',
+      use: {
+        browserName: 'firefox',
+        viewport: null,
+      },
+    },
+
+    {
+      name: 'webkit',
+      use: {
+        browserName: 'webkit',
+        viewport: null,
+      },
+    },
+  ],
 
   outputDir: "test-results",
 });
