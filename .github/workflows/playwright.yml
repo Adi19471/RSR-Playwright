@@ -24,7 +24,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps chromium firefox webkit msedge chrome
     - name: Check secrets are wired (prints lengths only, never values)
-      shell: pwsh
+      shell: powershell
       run: |
         Write-Host "BASE_URL length: $("$env:BASE_URL".Length)"
         Write-Host "RSR_USERNAME length: $("$env:RSR_USERNAME".Length)"
