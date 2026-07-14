@@ -8,7 +8,7 @@ export const sessionStorageFile = path.resolve(__dirname, "playwright/.auth/sess
 
 export default async function globalSetup(config: FullConfig) {
   const baseURL = config.projects[0].use.baseURL;
-  const browser = await chromium.launch();
+  const browser = await chromium.launch({ headless: !!process.env.CI });
   const context = await browser.newContext({ baseURL });
   const page = await context.newPage();
 

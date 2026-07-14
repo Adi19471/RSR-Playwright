@@ -33,7 +33,8 @@ export default defineConfig({
  use: {
   baseURL: process.env.BASE_URL,
 
-  headless: false,
+  // CI runners have no display, so headed mode there would fail to launch.
+  headless: !!process.env.CI,
 
   viewport: null,
 

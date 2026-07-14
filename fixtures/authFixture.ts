@@ -16,7 +16,7 @@ export const test = base.extend({
           window.sessionStorage.setItem(key, value);
         }
       }, sessionStorageJson);
-    }
+    } 
     await use(context);
   },
   page: async ({ page }, use) => {

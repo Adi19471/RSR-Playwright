@@ -21,6 +21,12 @@ export const MASTER_SCREENS = [
 
 export async function openMasterScreen(page: Page, buttonName: string) {
   await page.getByRole("button", { name: buttonName, exact: true }).click();
+  // Every master screen shares this "Search All Fields" textbox, so it's a
+  // reliable, generic signal that the SPA finished navigating off the
+  // Masters selector before callers (e.g. openNewRecordForm) proceed.
+  await expect(page.getByRole("textbox", { name: "Search All Fields" })).toBeVisible({
+    timeout: 15000,
+  });
 }
 
 export async function expectMasterScreenLoaded(page: Page, heading: string) {
