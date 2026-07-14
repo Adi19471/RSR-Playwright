@@ -8,7 +8,7 @@ on:
 jobs:
   test:
     timeout-minutes: 60
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     env:
       CI: true
       BASE_URL: ${{ secrets.BASE_URL }}
@@ -24,10 +24,11 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps chromium
     - name: Check secrets are wired (prints lengths only, never values)
+      shell: pwsh
       run: |
-        echo "BASE_URL length: ${#BASE_URL}"
-        echo "RSR_USERNAME length: ${#RSR_USERNAME}"
-        echo "RSR_PASSWORD length: ${#RSR_PASSWORD}"
+        Write-Host "BASE_URL length: $("$env:BASE_URL".Length)"
+        Write-Host "RSR_USERNAME length: $("$env:RSR_USERNAME".Length)"
+        Write-Host "RSR_PASSWORD length: $("$env:RSR_PASSWORD".Length)"
     - name: Run Playwright tests
       run: npx playwright test
     - name: Generate Allure report
