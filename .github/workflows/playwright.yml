@@ -23,6 +23,11 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps chromium
+    - name: Check secrets are wired (prints lengths only, never values)
+      run: |
+        echo "BASE_URL length: ${#BASE_URL}"
+        echo "RSR_USERNAME length: ${#RSR_USERNAME}"
+        echo "RSR_PASSWORD length: ${#RSR_PASSWORD}"
     - name: Run Playwright tests
       run: npx playwright test
     - name: Generate Allure report
